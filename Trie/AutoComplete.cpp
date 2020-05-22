@@ -30,7 +30,7 @@ factory
 No suggestions
 
 
-
+Second strong input
 input:
 3
 fact
