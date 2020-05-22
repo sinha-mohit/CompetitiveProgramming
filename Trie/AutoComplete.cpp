@@ -30,7 +30,7 @@ factory
 No suggestions
 
 
-Second strong input
+Second: Strong Test case
 input:
 3
 fact
