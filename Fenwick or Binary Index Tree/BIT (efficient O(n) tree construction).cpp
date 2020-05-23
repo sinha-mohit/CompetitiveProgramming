@@ -27,9 +27,16 @@ int main(){
     int *arr = new int[n + 1]();
     int *FT = new int[n + 1]();
 
-    for(int i = 1; i <= n; i++){/*this Fenwick tree construction is O(nlogn) since for every n we are doing O(logn) operation, you can do better in just O(n)*/
+    for(int i = 1; i <= n; i++){
         cin >> arr[i];
-        update(i, arr[i], FT, n);//O(logn)
+        FT[i] = arr[i];
+        //update(i, arr[i], FT, n);//O(logn)
+    }
+    for(int i = 1; i <= n; i++){/*this Fenwick tree construction is O(n)*/
+        int j = i + (i & -i);
+        if(j <= n){
+            FT[j] = FT[j] + FT[i];
+        }
     }
     cout << "Sum of first 5 elements " << query(5, FT) << endl;
     cout << "Sum of elements form 2 index to 6 index " << query(6, FT) - query(1, FT) << endl; 
