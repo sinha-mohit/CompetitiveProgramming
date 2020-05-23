@@ -1,7 +1,18 @@
 //remember index are always from 1 to N.
 /*
 input:
-
+8
+1
+2
+3
+4
+5
+6
+7
+8
+output:
+Sum of first 5 elements 15
+Sum of elements form 2 index to 6 index 20
 */
 #include <iostream>
 using namespace std;
