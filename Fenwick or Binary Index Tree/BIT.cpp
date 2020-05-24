@@ -1,3 +1,4 @@
+//Range sum queries
 //remember index are always from 1 to N.
 /*
 input:
