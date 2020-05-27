@@ -40,3 +40,40 @@ All the special permutations of length 4 are: 1 2 3 4
 
 4 2 1 3
 */
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+#define ll long long
+ll dp[1 << 20 + 1];
+ll solve(int n, ll mask){
+    if(mask == ((1 << n) - 1)){
+        return 1;
+    }
+    if(dp[mask] != -1){
+        return dp[mask];
+    }
+    ll ans = 0;
+    for(int i = 0; i < n; i++){
+        if((mask&(1<<i))==0) {
+            bool temp=true;
+            for(int j=0;j<n;j++) {
+                if(i!=j && ((i+1)&(j+1))==(i+1) && (mask&(1<<j))!=0) {
+                    temp=false;
+                }
+            }
+            if(temp) {
+                ans+=solve(n, mask|(1<<i));
+            }
+        }
+
+    }
+    return dp[mask] = ans;
+}
+int main(){
+    memset(dp, -1, sizeof(dp));
+    int n;
+    cin >> n;
+    cout << solve(n, 0);
+    return 0;
+}
