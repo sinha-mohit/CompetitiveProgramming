@@ -1,6 +1,6 @@
 /*
 Ghost Type
-
+Send Feedback
 Gengar has got an integer N. Now using his ghostly powers, he can create the permutation from 1 to N of this given number.
 Since, he's a special kind of Poke'mon, so he thinks he deserves special permutations. He wants to find the total number of special permutations of length N, consisting of the integers from 1 to N
 .
@@ -39,41 +39,79 @@ All the special permutations of length 4 are: 1 2 3 4
 4 1 2 3
 
 4 2 1 3
+
 */
-
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
 #include <iostream>
-#include <cstring>
 using namespace std;
-#define ll long long
-ll dp[1 << 20 + 1];
-ll solve(int n, ll mask){
-    if(mask == ((1 << n) - 1)){
-        return 1;
-    }
-    if(dp[mask] != -1){
-        return dp[mask];
-    }
-    ll ans = 0;
-    for(int i = 0; i < n; i++){
-        if((mask&(1<<i))==0) {
-            bool temp=true;
-            for(int j=0;j<n;j++) {
-                if(i!=j && ((i+1)&(j+1))==(i+1) && (mask&(1<<j))!=0) {
-                    temp=false;
-                }
-            }
-            if(temp) {
-                ans+=solve(n, mask|(1<<i));
-            }
-        }
 
-    }
-    return dp[mask] = ans;
+#define ll long long
+
+ll solver(ll mask, vector<ll> submask[], ll n, ll* dp) {
+	//cout<<mask<<endl;
+	if (mask == ((1 << (n + 1)) - 2)) {
+		return 1;
+	}
+
+	if (dp[mask] != -1) {
+		return dp[mask];
+	}
+
+
+
+	ll ans = 0;
+	for (ll i = n; i >= 1; i--) {
+		if ((mask & (1 << i)) == 0) {
+			ll ok = 1;
+			for (ll j = submask[i].size() - 1; j >= 0; j--) {
+				ll x = submask[i][j];
+				if ((mask & (1 << x)) == 0) {
+					//cout<<"YES"<<endl;
+					ok = 0;
+					break;
+				}
+			}
+
+			if (ok) {
+				ans += solver((mask | (1 << i)), submask, n, dp);
+			}
+		}
+	}
+
+	dp[mask] = ans;
+	//cout<<ans<<endl;
+	return ans;
 }
-int main(){
-    memset(dp, -1, sizeof(dp));
-    int n;
-    cin >> n;
-    cout << solve(n, 0);
-    return 0;
+
+int main() {
+	ll n;
+	cin >> n;
+	//vector<ll> submask[n + 1];
+	vector<ll>* submask = new vector<ll>[n + 1];
+	for (ll i = 1; i <= n; i++) {
+		for (ll j = i - 1; j > 0; j--) {
+			if ((j & i) == j) {
+				submask[i].push_back(j);
+			}
+		}
+
+	}
+
+	ll* dp = new ll[1 << (n + 2)];
+
+	for (ll i = 0; i < (1 << (n + 2)); i++) {
+		dp[i] = -1;
+	}
+	ll mask = 0;
+	ll ans = solver(mask, submask, n, dp);
+
+	cout << ans << endl;
+	delete[] dp;
+	delete[] submask;
+
+	return 0;
 }
