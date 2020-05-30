@@ -9,38 +9,39 @@ using namespace std;
 void computeLPSArray(char* pat, int M, int* lps) 
 { 
 	// length of the previous longest matching proper prefix which is also a suffix 
-	int len = 0; 
 
-	lps[0] = 0; // lps[0] is always 0 
+	lps[0] = 0;       // lps[0] is always 0 
 	int i = 1; 
+	int j = 0; 
+
 
     /*   0 1 2 3 4 5 6
     pat: a a b a a a c
            i
-         len
-    len = 0; i = 1;
+         j
+    j = 0; i = 1;
     lps[0] = 0;  
     */
 
 	// the loop calculates lps[i] for i = 1 to M-1 
 	while (i < M) { 
-		if (pat[i] == pat[len]) { 
-			len++; 
-			lps[i] = len; 
+		if (pat[i] == pat[j]) { 
+			lps[i] = j + 1; 
+			j++;
 			i++; 
 		} 
-		else // (pat[i] != pat[len]) 
+		else // (pat[i] != pat[j]) 
 		{ 
 			// This is tricky. Consider the example. 
 			// AAACAAAA and i = 7. The idea is similar 
 			// to search step. 
-			if (len != 0) { 
-				len = lps[len - 1]; 
+			if (j != 0) { 
+				j = lps[j - 1]; 
 
 				// Also, note that we do not increment 
 				// i here 
 			} 
-			else // if (len == 0) 
+			else // if (j == 0) 
 			{ 
 				lps[i] = 0; 
 				i++; 
@@ -59,6 +60,7 @@ void KMPSearch(char* pat, char* txt)
 	// values for pattern 
 	//int lps[M]; 
     int *lps = new int[M];
+
 	// Preprocess the pattern (calculate lps[] array) 
 	computeLPSArray(pat, M, lps); 
 
@@ -87,12 +89,13 @@ void KMPSearch(char* pat, char* txt)
                 /*j is the index for pattern and here j is equal to zero.
                 and if (pat[j] != txt[i]) that is pat[0] != txt[0] that is
                 first character is not same between text and pattern, then just
-                increment or go to next char in text i.e increment i 
+                increment i or go to next char in text i.e increment i 
                           0 1 2 3 4 5
                 eg: Text: a b c a b c
                               i 
                     patt: x y z
                           j
+					then i++;
                 */
             }
 		} 
