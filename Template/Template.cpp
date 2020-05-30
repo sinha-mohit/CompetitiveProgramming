@@ -13,7 +13,6 @@
 #define ll long long int
 #define ironman ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define MOD 1000000007 
-#define endl '\n'
 #define INF 1e18L+1
 #define mp make_pair
 #define fi first
