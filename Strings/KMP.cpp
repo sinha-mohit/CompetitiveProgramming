@@ -1,5 +1,4 @@
-// C++ program for implementation of KMP pattern searching 
-// algorithm 
+// C++ program for implementation of KMP pattern searching algorithm 
 // youtube: https://www.youtube.com/watch?v=4jY57Ehc14Y&t=2s
 //#include <bits/stdc++.h> 
 #include <iostream>

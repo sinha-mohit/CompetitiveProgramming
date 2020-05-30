@@ -6,7 +6,8 @@ void buildZ(int *Z, string str){
     int r = 0;
     int len = str.length();
     Z[0] = 0; //since first index is of no use
-
+    
+    // the loop calculates Z[i] for i = 1 to len-1
     for(int i = 1; i < len; i++){
         if(i > r){
             /*matlab i does not between l and r that is Z value does 
