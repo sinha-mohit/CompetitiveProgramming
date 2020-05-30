@@ -36,7 +36,8 @@ void buildZ(int *Z, string str){
                 /*if it crosses the upper bound r matlab oor jaada string match hone ki 
                 possibilities hai since len2 > len1*/
                 //new range l and r aab banega
-                l = i; //new starting of range
+
+                l = i; //starting of new range
                 while(r < len && str[r - l] == str[r]){
                     r++;
                 }
@@ -47,12 +48,12 @@ void buildZ(int *Z, string str){
     }
 }
 void searchString(string text, string pattern){
-    string tempString = pattern + "$" + text;
+    string tempString = pattern + "$" + text; //delimitter
     int * Z = new int[tempString.length()]();
     buildZ(Z, tempString);
     for(int i = 0; i < tempString.length(); i++){
         if(Z[i] == pattern.length()){
-            cout << "Pattern is at index: " << i - (pattern.length() + 1) << endl;
+            cout << "Pattern is at index: " << i - (pattern.length() + 1) << endl; // +1 due to addition of delimitter
         }
     }
     delete[] Z;
