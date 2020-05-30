@@ -82,6 +82,7 @@ void computeLPSArray(char* pat, int M, int* lps)
 	} 
 } 
 
+<<<<<<< HEAD
 // Driver program to test above function 
 int main() 
 { 
@@ -90,3 +91,12 @@ int main()
 	KMPSearch(pat, txt); 
 	return 0; 
 } 
+=======
+}
+int main(){
+    char text[] = "aacyaacybaacyaacyaax";
+    char pattern[] = "acy";
+    cout << findString(text, pattern) << endl;
+    return 0;
+}
+>>>>>>> 9d2f2b5f9cc7c70e414348b26fafc7c88b51d332
