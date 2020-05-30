@@ -78,3 +78,9 @@ int findString(char *txt, char *pat) {
     return -1; //nothing matched
 
 }
+int main(){
+    char text[] = "aacyaacybaacyaacyaax";
+    char pattern[] = "acy";
+    cout << findString(text, pattern) << endl;
+    return 0;
+}
