@@ -1,0 +1,26 @@
+Where to use stack?
+(or) how to guess that the problem will use stack?
+
+ans: Whenever the second nested loop is dependent on the first loop,
+then maximum chance is of using stack to reduce complexity from O(n^2) to O(n).
+
+for(int i = 0; i < n; i++){
+	for(int j = i; j < n; j++){
+	}
+}
+
+or:
+
+2nd nested loop type where j is a function of i:
+  for(int j = 0; j < i; j++){
+  }
+  for(int j = i; j < n; j++){
+  }
+  for(int j = n; j >= i; j--){
+  }
+  for(int j = i; j >= 0; j--){
+  }
+
+For all these to reduce complexity from O(n^2) to O(n), use Stack Data Structure(most of the time).
+
+
