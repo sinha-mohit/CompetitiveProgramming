@@ -24,3 +24,15 @@ or:
 For all these to reduce complexity from O(n^2) to O(n), use Stack Data Structure(most of the time).
 
 
+NSL : Nearest Smallest to Left
+NSR : Nearest Smallest to Right
+NGL : Nearest Greatest to Left
+NGR : Nearest Greatest to Right
+
+ye 4 points mei hi saab stack ke questions baante hai;
+
+eg: Stock Span Problem (NSL), 
+Max Area in the Histogram (NSL, NSR), 
+Max Area in a Matrix of 1's (appl. of Max Area in Histogram)
+
+
