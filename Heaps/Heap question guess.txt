@@ -1,0 +1,19 @@
+2 types of heap:
+ a. min Heap
+ b. max Heap
+
+question type:
+ find Kth largest element : use min Heap
+ find Kth smallest element: use max Heap
+
+Brute Force: Sort the array ascending/descending and find the Kth element. O(nlogn)
+
+Using Heap:
+ Reducing Complexity from O(nlogn) to O(nlogk)
+
+
+max Heap:
+ priority_queue<int> maxH;
+
+max Heap:
+ priority_queue<int, vector<int>, greater<int>> minH;
