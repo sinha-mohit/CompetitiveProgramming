@@ -39,15 +39,15 @@ int main()
 	    }
 	    priority_queue<int, vector<int>, greater<int>> minH;
 	    vector<int> ans;
-	    for(int i = 0; i < k; i++){
+	    for(int i = 0; i < k; i++){ //push first k elements in the heap
 	        minH.push(arr[i]);
 	    }
-	    for(int i = k; i < n; i++){
+	    for(int i = k; i < n; i++){ //extact min element from the heap and then insert the next element
 	        ans.push_back(minH.top());
 	        minH.pop();
 	        minH.push(arr[i]);
 	    }
-	    while(minH.size() != 0){
+	    while(minH.size() != 0){ //push_back left over elements of the heap in the ans
 	        ans.push_back(minH.top());
 	        minH.pop();
 	    }
