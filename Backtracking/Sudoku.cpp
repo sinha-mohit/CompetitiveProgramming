@@ -19,20 +19,20 @@ Sample Input :
 Sample Output :
 true
 */
-#include<iostream>
-#include<vector>
-#include<utility>
-#include<algorithm>
-#include<unordered_map>
-#include<map>
-#include<string>
-#include<cstring>
-#include<unordered_set>
-#include<unordered_set>
-#include<algorithm>
-#include<set>
-#include<cmath>
-//#include<bits/stdc++.h>
+// #include<iostream>
+// #include<vector>
+// #include<utility>
+// #include<algorithm>
+// #include<unordered_map>
+// #include<map>
+// #include<string>
+// #include<cstring>
+// #include<unordered_set>
+// #include<unordered_set>
+// #include<algorithm>
+// #include<set>
+// #include<cmath>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long
 bool isColumnPossible(int board[9][9], int num, int col) {
