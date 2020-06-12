@@ -30,7 +30,7 @@ public:
         int left = 0;
         int right = nums.size() - 1;
         int mid;
-        //finding the min element index
+        //finding the min element index which is the pivot
         while(left < right){ //left == right pe break hoga everytime(modified binary search)
             mid = left + (right - left) / 2;
             if(nums[mid] > nums[right]){

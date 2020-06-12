@@ -22,9 +22,9 @@ This is a follow up problem to Find Minimum in Rotated Sorted Array.
 Would allow duplicates affect the run-time complexity? How and why?
 */
 
+//Best Approach
 #include <bits/stdc++.h>
 using namespace std;
-
 
 class Solution {
 public:
@@ -100,3 +100,44 @@ public:
     }
 };
 
+
+
+//Another Approach (Another best Approach, first find min Index and then return the element at that min Index)
+class Solution {
+public:
+    int pivotind(vector<int>& a, int st, int end, int n){
+    if(st > end){
+        return 0;
+    }
+    
+    int mid=(st+end)/2;
+    
+    if(mid+1 < n && a[mid+1] < a[mid])
+        return mid+1;
+        
+    if(mid-1 >= 0 && a[mid] < a[mid-1])
+        return mid;
+        
+    if(a[st] < a[mid])
+        return pivotind(a,mid+1,end,n);
+        
+    else if(a[mid] < a[end])
+        return pivotind(a,st,mid-1,n);
+        
+    else
+        {   // if(a[st] >= a[mid] && a[mid] >= a[end])
+            // mid kabhi min indx hoga hi nahi, search in both half if not able to decide to select which half
+            int res1=pivotind(a,mid+1,end,n);
+            int res2=pivotind(a,st,mid-1,n);
+            // if(res1==0)
+            //     return res2;
+            // return res1;            //index: 0 1 2 3 4 5 6 7 8 9
+            return max(res1, res2);   //   num: 1 2 3 4 5 5 6 8 9 1    so this will return indx 9 and not indx 0 for min value in the array
+        }
+    }
+    
+    int findMin(vector<int>& nums) {
+        int pivotIdx = pivotind(nums, 0, nums.size() - 1, nums.size());
+        return nums[pivotIdx];
+    }
+};
