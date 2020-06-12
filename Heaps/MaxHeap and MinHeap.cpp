@@ -15,8 +15,8 @@ struct Person {
 
 	// this will used to initialize the variables 
 	// of the structure 
-	Person(int _age, float _height) {
-        age = _age;
+	Person(int _age, float _height) { 
+        age = _age;      //constructor me you never initialize the variables...uppar waale hi variavle use hote hai
         height = _height;
     }
 }; 
