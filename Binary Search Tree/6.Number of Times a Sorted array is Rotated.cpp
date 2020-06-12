@@ -66,7 +66,8 @@ int pivotind(ll a[],int st,int end,int n)
         return pivotind(a,st,mid-1,n);
         
     else
-        {
+        { // if(a[st] >= a[mid] && a[mid] >= a[end])
+            // mid kabhi min indx hoga hi nahi, search in both half if not able to decide
             int res1=pivotind(a,mid+1,end,n);
             int res2=pivotind(a,st,mid-1,n);
             // if(res1==0)
