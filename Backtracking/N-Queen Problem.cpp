@@ -17,7 +17,7 @@ Sample Output 1 :
 0 0 1 0 1 0 0 0 0 0 0 1 0 1 0 0 
 */
 
-//#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 #include <iostream>
 using namespace std;
 int board[11][11]; //assuming the max size of board 10 * 10
